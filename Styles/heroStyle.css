@@ -87,7 +87,7 @@ html[data-theme="dark"] .hero-badge {
 }
 
 .hero-brand-image {
-  max-width: min(320px, 78vw);
+  
   height: auto;
   display: block;
 }
