@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Envío de Resúmenes | CAC 2027</title>
+  <meta name="description" content="Instrucciones para autores, descarga de plantillas y plataforma de envío de contribuciones científicas al Congreso Argentino de Catálisis.">
+  <link rel="stylesheet" href="Styles/mainStyle.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Blocking Script to prevent flash of theme on reload -->
+  <script>
+    (function () {
+      const theme = localStorage.getItem('theme') || 'light';
+      if (theme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header id="main-header">
+    <div class="container nav-container">
+      <a href="index.html" class="logo" id="header-logo" aria-label="Inicio CAC 2027">
+        <img class="logo-mark logo-mark-light" src="resources/herolightVersion.png" width="111" height="44" alt="CAC 2027">
+        <img class="logo-mark logo-mark-dark" src="resources/heroDarkVersion.png" width="111" height="44" alt="CAC 2027">
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Inicio</a>
+        <a href="servicios.html">Programa</a>
+        <a href="proyectos.html" class="active">Resúmenes</a>
+        <a href="nosotros.html">Comités</a>
+        <a href="blog.html">Circulares</a>
+        <a href="congreso.html">Congreso</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="aranceles.html">Aranceles</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" id="theme-switch" aria-label="Cambiar Tema">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <div class="header-cta">
+          <button class="btn-secondary" onclick="window.location.href='contacto.html'">Inscripción</button>
+          <button class="btn-primary" onclick="window.location.href='proyectos.html'">Enviar Trabajo</button>
+        </div>
+      </div>
+      <button class="hamburger" id="menu-toggle" aria-label="Toggle Navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- INNER HERO -->
+  <section class="hero inner-page-hero" style="padding: 150px 0 60px;">
+    <div class="hero-glow-orb"></div>
+    <div class="container">
+      <div class="hero-content reveal active" style="margin-bottom: 0;">
+        <span class="hero-badge">Presentación de Trabajos</span>
+        <h1 class="hero-title" style="font-size: 3rem;">Envío de <span class="gradient">Resúmenes</span></h1>
+        <p class="hero-desc">Instructivos detallados y plantillas oficiales para la presentación de resúmenes. Los trabajos aceptados se publicarán en el Libro de Actas oficial del Congreso.</p>
+      </div>
+    </div>
+      <a href="#" class="hero-scroll-cue" aria-label="Ver más">
+      <i class="fa-solid fa-chevron-down"></i>
+    </a>
+  </section>
+
+  <!-- PROJECTS GALLERY GRID (Representing submission types and templates) -->
+  <section id="gallery-section" style="padding: 40px 0 100px;">
+    <div class="container">
+      <div class="gallery-filter reveal active" id="gallery-filters">
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter="web">Plantillas de Escritura</button>
+        <button class="filter-btn" data-filter="brand">Instrucciones Visuales</button>
+        <button class="filter-btn" data-filter="ux">Políticas del Par</button>
+      </div>
+      
+      <div class="gallery-grid">
+        <!-- Gallery Item 1 -->
+        <div class="gallery-item reveal active" data-category="web" id="gal-1">
+          <div class="gallery-img-wrapper">
+            <svg width="400" height="300" viewBox="0 0 400 300" style="background: var(--gallery-bg-1);">
+              <defs>
+                <radialGradient id="g1" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="var(--primary)" stop-opacity="0.25"/>
+                  <stop offset="100%" stop-color="var(--bg-secondary)" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+              <rect width="400" height="300" fill="url(#g1)"/>
+              <text x="200" y="130" text-anchor="middle" fill="var(--primary)" font-family="'Outfit', sans-serif" font-size="50"><i class="fa-regular fa-file-word"></i></text>
+              <text x="200" y="270" text-anchor="middle" fill="var(--gallery-text)" font-family="'Outfit', sans-serif" font-size="12" letter-spacing="2">PLANTILLA WORD (.DOCX)</text>
+            </svg>
+            <div class="gallery-overlay">
+              <span class="gallery-category">Plantillas de Escritura</span>
+              <h3 class="gallery-title">Formato de Resumen Extendido</h3>
+            </div>
+            <div class="gallery-zoom-icon">
+              <i class="fa-solid fa-expand"></i>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Gallery Item 2 -->
+        <div class="gallery-item reveal active" data-category="brand" id="gal-2">
+          <div class="gallery-img-wrapper">
+            <svg width="400" height="300" viewBox="0 0 400 300" style="background: var(--gallery-bg-2);">
+              <defs>
+                <radialGradient id="g2" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="var(--secondary)" stop-opacity="0.25"/>
+                  <stop offset="100%" stop-color="var(--bg-secondary)" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+              <rect width="400" height="300" fill="url(#g2)"/>
+              <text x="200" y="130" text-anchor="middle" fill="var(--secondary)" font-family="'Outfit', sans-serif" font-size="50"><i class="fa-regular fa-image"></i></text>
+              <text x="200" y="270" text-anchor="middle" fill="var(--gallery-text)" font-family="'Outfit', sans-serif" font-size="12" letter-spacing="2">DISEÑO DE POSTER</text>
+            </svg>
+            <div class="gallery-overlay">
+              <span class="gallery-category">Instrucciones Visuales</span>
+              <h3 class="gallery-title">Formato y Medidas de Posters</h3>
+            </div>
+            <div class="gallery-zoom-icon">
+              <i class="fa-solid fa-expand"></i>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Gallery Item 3 -->
+        <div class="gallery-item reveal active" data-category="ux" id="gal-3">
+          <div class="gallery-img-wrapper">
+            <svg width="400" height="300" viewBox="0 0 400 300" style="background: var(--gallery-bg-3);">
+              <defs>
+                <radialGradient id="g3" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="var(--accent)" stop-opacity="0.25"/>
+                  <stop offset="100%" stop-color="var(--bg-secondary)" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+              <rect width="400" height="300" fill="url(#g3)"/>
+              <text x="200" y="130" text-anchor="middle" fill="var(--accent)" font-family="'Outfit', sans-serif" font-size="50"><i class="fa-solid fa-graduation-cap"></i></text>
+              <text x="200" y="270" text-anchor="middle" fill="var(--gallery-text)" font-family="'Outfit', sans-serif" font-size="12" letter-spacing="2">PAUTA DE EVALUACIÓN</text>
+            </svg>
+            <div class="gallery-overlay">
+              <span class="gallery-category">Políticas del Par</span>
+              <h3 class="gallery-title">Criterios de Aceptación Científica</h3>
+            </div>
+            <div class="gallery-zoom-icon">
+              <i class="fa-solid fa-expand"></i>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Gallery Item 4 -->
+        <div class="gallery-item reveal active" data-category="web" id="gal-4">
+          <div class="gallery-img-wrapper">
+            <svg width="400" height="300" viewBox="0 0 400 300" style="background: var(--gallery-bg-4);">
+              <defs>
+                <radialGradient id="g4" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="var(--accent)" stop-opacity="0.2"/>
+                  <stop offset="100%" stop-color="var(--bg-secondary)" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+              <rect width="400" height="300" fill="url(#g4)"/>
+              <text x="200" y="130" text-anchor="middle" fill="var(--accent)" font-family="'Outfit', sans-serif" font-size="50"><i class="fa-regular fa-file-pdf"></i></text>
+              <text x="200" y="270" text-anchor="middle" fill="var(--gallery-text)" font-family="'Outfit', sans-serif" font-size="12" letter-spacing="2">PLANTILLA LATEX (.TEX)</text>
+            </svg>
+            <div class="gallery-overlay">
+              <span class="gallery-category">Plantillas de Escritura</span>
+              <h3 class="gallery-title">Compilado LaTeX para Envíos</h3>
+            </div>
+            <div class="gallery-zoom-icon">
+              <i class="fa-solid fa-expand"></i>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Gallery Item 5 -->
+        <div class="gallery-item reveal active" data-category="brand" id="gal-5">
+          <div class="gallery-img-wrapper">
+            <svg width="400" height="300" viewBox="0 0 400 300" style="background: var(--gallery-bg-5);">
+              <defs>
+                <radialGradient id="g5" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="var(--primary)" stop-opacity="0.25"/>
+                  <stop offset="100%" stop-color="var(--bg-secondary)" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+              <rect width="400" height="300" fill="url(#g5)"/>
+              <text x="200" y="130" text-anchor="middle" fill="var(--primary)" font-family="'Outfit', sans-serif" font-size="50"><i class="fa-solid fa-display"></i></text>
+              <text x="200" y="270" text-anchor="middle" fill="var(--gallery-text)" font-family="'Outfit', sans-serif" font-size="12" letter-spacing="2">PLANTILLA SLIDES</text>
+            </svg>
+            <div class="gallery-overlay">
+              <span class="gallery-category">Instrucciones Visuales</span>
+              <h3 class="gallery-title">Plantilla de Presentación Oral</h3>
+            </div>
+            <div class="gallery-zoom-icon">
+              <i class="fa-solid fa-expand"></i>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Gallery Item 6 -->
+        <div class="gallery-item reveal active" data-category="ux" id="gal-6">
+          <div class="gallery-img-wrapper">
+            <svg width="400" height="300" viewBox="0 0 400 300" style="background: var(--gallery-bg-6);">
+              <defs>
+                <radialGradient id="g6" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="var(--secondary)" stop-opacity="0.25"/>
+                  <stop offset="100%" stop-color="var(--bg-secondary)" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+              <rect width="400" height="300" fill="url(#g6)"/>
+              <text x="200" y="130" text-anchor="middle" fill="var(--secondary)" font-family="'Outfit', sans-serif" font-size="50"><i class="fa-solid fa-scale-balanced"></i></text>
+              <text x="200" y="270" text-anchor="middle" fill="var(--gallery-text)" font-family="'Outfit', sans-serif" font-size="12" letter-spacing="2">DERECHOS DE AUTOR</text>
+            </svg>
+            <div class="gallery-overlay">
+              <span class="gallery-category">Políticas del Par</span>
+              <h3 class="gallery-title">Cesión de Derechos y Publicación</h3>
+            </div>
+            <div class="gallery-zoom-icon">
+              <i class="fa-solid fa-expand"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX MODAL OVERLAY -->
+  <div class="lightbox" id="gallery-lightbox">
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightbox-close-btn">&times;</button>
+      <div id="lightbox-img-container"></div>
+      <div class="lightbox-caption" id="lightbox-caption-text"></div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer id="main-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">CAC 2027<span class="logo-dot"></span></a>
+          <p class="footer-desc">XXV Congreso Argentino de Catálisis. Organizado por la Sociedad/Asociación Argentina de Catálisis.</p>
+          <div class="footer-socials">
+            <a href="#" class="social-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" class="social-link" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          </div>
+        </div>
+        <div class="footer-links-col">
+          <h4>Navegación</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="servicios.html">Programa</a></li>
+            <li><a href="proyectos.html">Resúmenes</a></li>
+            <li><a href="nosotros.html">Comités</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-col">
+          <h4>Recursos</h4>
+          <ul class="footer-links-list">
+            <li><a href="blog.html">Circulares</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-newsletter">
+          <h4>Subscripción</h4>
+          <p>Mantente al tanto de la publicación de las Circulares y el cronograma del congreso.</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); alert('¡Gracias por suscribirte!');">
+            <input type="email" placeholder="Tu correo electrónico" class="newsletter-input" required>
+            <button type="submit" class="newsletter-btn"><i class="fa-solid fa-arrow-right"></i></button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2027 XXV Congreso Argentino de Catálisis. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
