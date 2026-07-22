@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Congreso | CAC 2027</title>
+  <meta name="description" content="Información sobre la sede del CAC 2027, mapa interactivo, hoteles, restaurantes y lugares emblemáticos en Ciudad Universitaria, Buenos Aires.">
+  <link rel="stylesheet" href="Styles/mainStyle.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  
+  <!-- Blocking Script to prevent flash of theme on reload -->
+  <script>
+    (function () {
+      const theme = localStorage.getItem('theme') || 'light';
+      if (theme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- HEADER / NAVIGATION -->
+  <header id="main-header">
+    <div class="container nav-container">
+      <a href="index.html" class="logo" id="header-logo" aria-label="Inicio CAC 2027">
+        <img class="logo-mark logo-mark-light" src="resources/herolightVersion.png" width="111" height="44" alt="CAC 2027">
+        <img class="logo-mark logo-mark-dark" src="resources/heroDarkVersion.png" width="111" height="44" alt="CAC 2027">
+      </a>
+      
+      <nav class="nav-links" id="nav-menu">
+        <a href="index.html"  id="nav-home">Inicio</a>
+        <div class="nav-item">
+          <a href="congreso.html" class="active" id="nav-congress">Congreso</a>
+          <div class="nav-submenu">
+            <a href="comitecientifico.html">Comité científico</a>
+            <a href="comiteorganizador.html">Comité organizador</a>
+            <a href="premiossacat.html">Premios SACAT</a>
+            <a href="servicios.html">Programa científico</a>
+            <a href="invitados.html">Invitados/Expositores</a>
+            <a href="congreso.html">Sede del Congreso</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="infogeneral.html" id="nav-school">Escuela</a>
+          <div class="nav-submenu">
+            <a href="infogeneral.html">Información general</a>
+            <a href="inscripcion.html">Inscripción</a>
+            <a href="becas.html">Becas</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="areasTematicas.html" id="nav-works">Trabajos</a>
+          <div class="nav-submenu">
+            <a href="areasTematicas.html">Áreas temáticas</a>
+            <a href="instrucciones.html">Instrucciones de trabajo</a>
+            <a href="envioTrabajos.html">Envío de trabajo</a>
+          </div>
+        </div>
+        <a href="inscripciones.html" id="nav-inscriptions">Inscripciones</a>
+        <a href="fechasrelevantes.html" id="nav-dates">Fechas relevantes</a>
+        <a href="contacto.html" id="nav-contact">Contacto</a>
+      </nav>
+      
+      <div class="header-actions">
+        <button class="theme-toggle" id="theme-switch" aria-label="Cambiar Tema">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <div class="header-cta">
+          <button class="btn-secondary" onclick="window.location.href='contacto.html'">Inscripción</button>
+          <button class="btn-primary" onclick="window.location.href='proyectos.html'">Enviar Trabajo</button>
+        </div>
+      </div>
+      
+      <button class="hamburger" id="menu-toggle" aria-label="Toggle Navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- INNER HERO -->
+  <section class="hero inner-page-hero" style="padding: 150px 0 60px;">
+    <div class="hero-glow-orb"></div>
+    <div class="container">
+      <div class="hero-content reveal active" style="margin-bottom: 0;">
+        <span class="hero-badge">Información de Ubicación</span>
+        <h1 class="hero-title" style="font-size: 3rem;">Congreso <span class="gradient">2027</span></h1>
+        <p class="hero-desc">Conoce la sede del congreso, establecimientos cercanos y lugares emblemáticos en Ciudad Universitaria.</p>
+      </div>
+    </div>
+      <a href="#" class="hero-scroll-cue" aria-label="Ver más">
+      <i class="fa-solid fa-chevron-down"></i>
+    </a>
+  </section>
+  <section style="padding: 60px 0 100px;">
+      <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Ubicación</span>
+        <h2 class="section-title">¿Dónde nos encontramos?</h2>
+      </div>
+  <!-- SEDE & MAPA SECTION -->
+
+    <div class="container">
+      <div class="info-grid sede-grid">
+        <!-- Left Side: Sede del Congreso -->
+        <div style="display: flex; flex-direction: column; gap: 2rem;">
+          <div class="info-card reveal active" style="padding: 2.5rem 2rem;">
+            <div class="info-icon-wrapper"><i class="fa-solid fa-map-location-dot"></i></div>
+            <h3>Sede del Congreso</h3>
+            <p style="color: var(--accent); font-weight: 600; font-size: 1.1rem; margin-top: 0.5rem;">CABA, Buenos Aires</p>
+            <p style="margin-top: 0.5rem;">Las sesiones plenarias y técnicas se llevarán a cabo en las aulas y salones de convención de la Facultad de Ciencias Exactas y Naturales (UBA).</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);"><strong>Dirección:</strong><br>Ciudad Universitaria, Av. Intendente Güiraldes 2160<br>C1428EGA, CABA</p>
+          </div>
+        </div>
+
+        <!-- Right Side: Interactive Map -->
+        <div class="info-card reveal active sede-map-card" style="padding: 1.5rem; overflow: hidden; height: 300px;">
+          <div id="map" style="width: 100%; height: 100%; border-radius: var(--radius-sm); cursor: pointer;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOTELS SECTION -->
+  <section style="padding: 60px 0 100px; background-color: var(--bg-card);">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Alojamiento</span>
+        <h2 class="section-title">Hoteles Recomendados</h2>
+      </div>
+      
+      <div class="info-grid">
+        <div class="info-card reveal active" style="padding: 2rem;">
+          <div class="info-icon-wrapper"><i class="fa-solid fa-hotel"></i></div>
+          <h3>Hotel Fierro</h3>
+          <p style="margin-top: 0.8rem; font-size: 0.95rem;">Boutique hotel de lujo en San Telmo. A 20 minutos de Ciudad Universitaria.</p>
+          <p style="margin-top: 0.5rem; color: var(--accent); font-weight: 600;">⭐⭐⭐⭐⭐</p>
+          <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted);">Teléfono: +54 11 4342-1100</p>
+        </div>
+
+        <div class="info-card reveal active" style="padding: 2rem;">
+          <div class="info-icon-wrapper"><i class="fa-solid fa-hotel"></i></div>
+          <h3>Home Hotel Buenos Aires</h3>
+          <p style="margin-top: 0.8rem; font-size: 0.95rem;">Diseño y confort en el corazón de Palermo. A 15 minutos de la sede.</p>
+          <p style="margin-top: 0.5rem; color: var(--accent); font-weight: 600;">⭐⭐⭐⭐⭐</p>
+          <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted);">Teléfono: +54 11 4778-1008</p>
+        </div>
+
+        <div class="info-card reveal active" style="padding: 2rem;">
+          <div class="info-icon-wrapper"><i class="fa-solid fa-hotel"></i></div>
+          <h3>Fierro Hotel Recoleta</h3>
+          <p style="margin-top: 0.8rem; font-size: 0.95rem;">Ubicado en la elegante zona de Recoleta. A 10 minutos del congreso.</p>
+          <p style="margin-top: 0.5rem; color: var(--accent); font-weight: 600;">⭐⭐⭐⭐</p>
+          <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted);">Teléfono: +54 11 4809-2777</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESTAURANTS SECTION -->
+  <section style="padding: 60px 0 100px;">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Gastronomía</span>
+        <h2 class="section-title">Restaurantes Destacados</h2>
+      </div>
+      
+      <div class="info-grid">
+        <div class="info-card reveal active" style="padding: 2rem;">
+          <div class="info-icon-wrapper"><i class="fa-solid fa-utensils"></i></div>
+          <h3>Punto G</h3>
+          <p style="margin-top: 0.8rem; font-size: 0.95rem;">Cocina innovadora en un espacio único en Palermo. A 8 km de la sede.</p>
+          <p style="margin-top: 0.5rem; color: var(--accent); font-weight: 600;">⭐⭐⭐⭐⭐</p>
+          <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted);">Tipo: Cocina Moderna</p>
+        </div>
+
+        <div class="info-card reveal active" style="padding: 2rem;">
+          <div class="info-icon-wrapper"><i class="fa-solid fa-utensils"></i></div>
+          <h3>La Cabrera</h3>
+          <p style="margin-top: 0.8rem; font-size: 0.95rem;">Parrilla tradicional argentina con ambiente clásico. A 12 km de distancia.</p>
+          <p style="margin-top: 0.5rem; color: var(--accent); font-weight: 600;">⭐⭐⭐⭐</p>
+          <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted);">Tipo: Parrilla Tradicional</p>
+        </div>
+
+        <div class="info-card reveal active" style="padding: 2rem;">
+          <div class="info-icon-wrapper"><i class="fa-solid fa-utensils"></i></div>
+          <h3>Fierro Restaurant</h3>
+          <p style="margin-top: 0.8rem; font-size: 0.95rem;">Culinaria de autor en San Telmo. A 20 km del congreso.</p>
+          <p style="margin-top: 0.5rem; color: var(--accent); font-weight: 600;">⭐⭐⭐⭐⭐</p>
+          <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted);">Tipo: Cocina de Autor</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LANDMARKS SECTION -->
+  <section style="padding: 60px 0 100px; background-color: var(--bg-card);">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Cultura y Turismo</span>
+        <h2 class="section-title">Lugares Emblemáticos</h2>
+      </div>
+      
+      <div class="info-grid">
+        <div class="info-card reveal active" style="padding: 2rem;">
+          <div class="info-icon-wrapper"><i class="fa-solid fa-landmark"></i></div>
+          <h3>Teatro Colón</h3>
+          <p style="margin-top: 0.8rem; font-size: 0.95rem;">Ícono arquitectónico de Buenos Aires. Visitas guiadas disponibles. A 15 km.</p>
+          <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted);"><strong>Ubicación:</strong> Centro, San Nicolás</p>
+        </div>
+
+        <div class="info-card reveal active" style="padding: 2rem;">
+          <div class="info-icon-wrapper"><i class="fa-solid fa-landmark"></i></div>
+          <h3>Cementerio de la Recoleta</h3>
+          <p style="margin-top: 0.8rem; font-size: 0.95rem;">Patrimonio histórico con arquitectura notoria. A 10 km de la sede.</p>
+          <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted);"><strong>Ubicación:</strong> Recoleta</p>
+        </div>
+
+        <div class="info-card reveal active" style="padding: 2rem;">
+          <div class="info-icon-wrapper"><i class="fa-solid fa-landmark"></i></div>
+          <h3>La Boca - Caminito</h3>
+          <p style="margin-top: 0.8rem; font-size: 0.95rem;">Barrio tradicional con coloridas casonas. A 18 km de la ciudad universitaria.</p>
+          <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted);"><strong>Ubicación:</strong> La Boca</p>
+        </div>
+
+        <div class="info-card reveal active" style="padding: 2rem;">
+          <div class="info-icon-wrapper"><i class="fa-solid fa-landmark"></i></div>
+          <h3>Palacio de las Aguas Corrientes</h3>
+          <p style="margin-top: 0.8rem; font-size: 0.95rem;">Joya arquitectónica beaux-arts con museo. A 12 km de distancia.</p>
+          <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted);"><strong>Ubicación:</strong> Centro</p>
+        </div>
+
+        <div class="info-card reveal active" style="padding: 2rem;">
+          <div class="info-icon-wrapper"><i class="fa-solid fa-landmark"></i></div>
+          <h3>Casa Rosada</h3>
+          <p style="margin-top: 0.8rem; font-size: 0.95rem;">Sede del poder ejecutivo nacional. A 14 km de la sede del congreso.</p>
+          <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted);"><strong>Ubicación:</strong> Plaza de Mayo</p>
+        </div>
+
+        <div class="info-card reveal active" style="padding: 2rem;">
+          <div class="info-icon-wrapper"><i class="fa-solid fa-landmark"></i></div>
+          <h3>Museo Nacional de Bellas Artes</h3>
+          <p style="margin-top: 0.8rem; font-size: 0.95rem;">Colección importante de arte argentino e internacional. A 11 km.</p>
+          <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted);"><strong>Ubicación:</strong> Recoleta</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="main-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">CAC 2027<span class="logo-dot"></span></a>
+          <p class="footer-desc">XXV Congreso Argentino de Catálisis. Organizado por la Sociedad/Asociación Argentina de Catálisis.</p>
+          <div class="footer-socials">
+            <a href="#" class="social-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" class="social-link" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          </div>
+        </div>
+        <div class="footer-links-col">
+          <h4>Navegación</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="congreso.html">Congreso</a></li>
+            <li><a href="inscripciones.html">Inscripciones</a></li>
+            <li><a href="fechasrelevantes.html">Fechas relevantes</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-col">
+          <h4>Recursos</h4>
+          <ul class="footer-links-list">
+            <li><a href="servicios.html">Programa científico</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-newsletter">
+          <h4>Subscripción</h4>
+          <p>Mantente al tanto de la publicación de las Circulares y el cronograma del congreso.</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); alert('¡Gracias por suscribirte!');">
+            <input type="email" placeholder="Tu correo electrónico" class="newsletter-input" required>
+            <button type="submit" class="newsletter-btn"><i class="fa-solid fa-arrow-right"></i></button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2027 XXV Congreso Argentino de Catálisis. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script src="main.js"></script>
+  <script>
+    // Coordenadas de la Facultad de Ciencias Exactas y Naturales (UBA)
+    const lat = -34.54099173451711;
+    const lng = -58.44387886457751;
+    
+    // Inicializar mapa con Leaflet
+    const map = L.map('map').setView([lat, lng], 16);
+    
+    // Usar OpenStreetMap como proveedor de tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors',
+      maxZoom: 19
+    }).addTo(map);
+    
+    // Agregar marcador con tooltip
+    const marker = L.marker([lat, lng]).addTo(map)
+      .bindPopup('Facultad de Ciencias Exactas y Naturales (UBA)<br>Ciudad Universitaria')
+      .openPopup();
+    
+    // Al hacer click en el mapa, abrir Google Maps
+    map.on('click', function() {
+      window.open(`https://maps.google.com/?q=${lat},${lng}`, '_blank');
+    });
+    
+    // También hacer clickeable el marcador
+    marker.on('click', function() {
+      window.open(`https://maps.google.com/?q=${lat},${lng}`, '_blank');
+    });
+  </script>
+</body>
+</html>

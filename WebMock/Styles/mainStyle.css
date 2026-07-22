@@ -1,0 +1,455 @@
+/* mainStyle.css */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+/* Modular CSS Imports */
+@import url('headerStyle.css');
+@import url('heroStyle.css');
+@import url('bodyStyle.css');
+@import url('footerStyle.css');
+
+:root {
+  /* ═══════════════════════════════════════════════════════════════
+     PALETA XXVCAC 2027 — Basada en el logo oficial
+     Cyan: #1ABC9C  |  Verde Lima: #B8D62F  |  Gris Oscuro: #2C3E50
+     ═══════════════════════════════════════════════════════════════ */
+
+  /* ── Backgrounds ── */
+  --bg-primary: #f4f5f7;
+  --bg-secondary: #eceef2;
+  --bg-card: rgba(44, 62, 80, 0.04);
+  --bg-card-hover: rgba(44, 62, 80, 0.08);
+  --border-color: rgba(44, 62, 80, 0.08);
+  --border-color-hover: rgba(44, 62, 80, 0.15);
+
+  /* ── Brand Colors ── */
+  --cyan: #1ABC9C;
+  --cyan-dark: #16a085;
+  --cyan-light: #48c9b0;
+  --lime: #B8D62F;
+  --lime-dark: #9cb826;
+  --slate: #6c7a8a;
+  --slate-light: #34495e;
+  --slate-muted: #5d6d7e;
+
+  /* ── Semantic Colors ── */
+  --primary: var(--cyan);
+  --primary-glow: rgba(26, 188, 156, 0.12);
+  --secondary: var(--lime);
+  --secondary-glow: rgba(184, 214, 47, 0.12);
+  --accent: var(--slate);
+  --accent-glow: rgba(44, 62, 80, 0.08);
+
+  /* ── Text ── */
+  --text-main: var(--slate);
+  --text-muted: var(--slate-muted);
+
+  /* ── Gradients ── */
+  --gradient-glow: linear-gradient(135deg, var(--cyan) 0%, var(--lime) 100%);
+  --gradient-glow-soft: linear-gradient(135deg, var(--cyan-light) 0%, var(--lime) 100%);
+  --gradient-accent: linear-gradient(135deg, var(--cyan) 0%, var(--slate) 100%);
+  --gradient-dark: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  --gradient-hero: linear-gradient(180deg, #f8f9fb 0%, #eceef2 50%, #e3e6eb 100%);
+
+  /* ── Radial Glows (sutiles, inspirados en los nodos del logo) ── */
+  --body-glow-1: rgba(15, 23, 42, 0.04);
+  --body-glow-2: rgba(100, 116, 139, 0.03);
+  --hero-gradient-center: rgba(15, 23, 42, 0.05);
+  --hero-gradient-glow: rgba(100, 116, 139, 0.04);
+
+  /* ── Header Backgrounds ── */
+  --bg-header: rgba(248, 249, 251, 0.85);
+  --bg-header-scrolled: rgba(248, 249, 251, 0.95);
+
+  /* ── Shadows ── */
+  --card-shadow-hover: 0 15px 35px rgba(15, 23, 42, 0.08), 0 5px 15px rgba(44, 62, 80, 0.04);
+  --btn-shadow: 0 4px 14px rgba(26, 188, 156, 0.16);
+  --btn-shadow-hover: 0 6px 20px rgba(26, 188, 156, 0.24);
+
+  /* ── Gallery Themes (coherentes con la paleta del logo) ── */
+  --gallery-bg-1: linear-gradient(135deg, #f8fafc 0%, #e5e7eb 100%);
+  --gallery-bg-2: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  --gallery-bg-3: linear-gradient(135deg, #f3f4f6 0%, #d1d5db 100%);
+  --gallery-bg-4: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  --gallery-bg-5: linear-gradient(135deg, #eef2f7 0%, #dbe2ea 100%);
+  --gallery-bg-6: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+
+  --gallery-text: var(--slate);
+  --gallery-stroke: rgba(26, 188, 156, 0.2);
+
+  /* ── Layout & Sizing ── */
+  --max-width: 1280px;
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   DARK MODE — XXVCAC 2027
+   ═══════════════════════════════════════════════════════════════ */
+html[data-theme="dark"] {
+  /* ── Backgrounds ── */
+  --bg-primary: #0f1729;
+  --bg-secondary: #162032;
+  --bg-card: rgba(26, 188, 156, 0.05);
+  --bg-card-hover: rgba(26, 188, 156, 0.1);
+  --border-color: rgba(255, 255, 255, 0.06);
+  --border-color-hover: rgba(255, 255, 255, 0.12);
+
+  /* ── Brand Colors (más luminosos en dark) ── */
+  --primary: #2dd4bf;
+  --primary-glow: rgba(45, 212, 191, 0.15);
+  --secondary: #bef264;
+  --secondary-glow: rgba(190, 242, 100, 0.15);
+  --accent: #94a3b8;
+  --accent-glow: rgba(148, 163, 184, 0.1);
+
+  /* ── Text ── */
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+
+  /* ── Gradients ── */
+  --gradient-glow: linear-gradient(135deg, #2dd4bf 0%, #bef264 100%);
+  --gradient-glow-soft: linear-gradient(135deg, #5eead4 0%, #bef264 100%);
+  --gradient-accent: linear-gradient(135deg, #2dd4bf 0%, #94a3b8 100%);
+  --gradient-dark: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  --gradient-hero: linear-gradient(180deg, #111827 0%, #1f2937 50%, #374151 100%);
+
+  /* ── Radial Glows ── */
+  --body-glow-1: rgba(148, 163, 184, 0.08);
+  --body-glow-2: rgba(71, 85, 105, 0.06);
+  --hero-gradient-center: rgba(45, 212, 191, 0.06);
+  --hero-gradient-glow: rgba(148, 163, 184, 0.06);
+
+  /* ── Header Backgrounds ── */
+  --bg-header: rgba(17, 24, 39, 0.86);
+  --bg-header-scrolled: rgba(17, 24, 39, 0.95);
+
+  /* ── Shadows ── */
+  --card-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.45);
+  --btn-shadow: 0 4px 14px rgba(45, 212, 191, 0.16);
+  --btn-shadow-hover: 0 6px 20px rgba(45, 212, 191, 0.24);
+
+  /* ── Gallery Themes (dark) ── */
+  --gallery-bg-1: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+  --gallery-bg-2: linear-gradient(135deg, #334155 0%, #475569 100%);
+  --gallery-bg-3: linear-gradient(135deg, #475569 0%, #64748b 100%);
+  --gallery-bg-4: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+  --gallery-bg-5: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  --gallery-bg-6: linear-gradient(135deg, #3f4c5d 0%, #475569 100%);
+
+  --gallery-text: #cbd5e1;
+  --gallery-stroke: rgba(45, 212, 191, 0.15);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   GLOBAL RESET & BASE
+   ═══════════════════════════════════════════════════════════════ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--bg-primary);
+  background-image:
+    radial-gradient(at 0% 0%, var(--body-glow-1) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, var(--body-glow-2) 0px, transparent 50%);
+  background-attachment: fixed;
+  color: var(--text-main);
+  min-height: 100vh;
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Outfit', sans-serif;
+  color: var(--text-main);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-fast);
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   UTILITIES
+   ═══════════════════════════════════════════════════════════════ */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ── Badge estilo "EDICIÓN XXV" del logo ── */
+.badge-edition {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.25rem;
+  border-radius: 9999px;
+  border: 1.5px solid var(--lime);
+  background: linear-gradient(135deg, rgba(184, 214, 47, 0.08) 0%, rgba(26, 188, 156, 0.08) 100%);
+  color: var(--slate);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+html[data-theme="dark"] .badge-edition {
+  border-color: var(--secondary);
+  background: linear-gradient(135deg, rgba(190, 242, 100, 0.1) 0%, rgba(45, 212, 191, 0.1) 100%);
+  color: var(--text-main);
+}
+
+/* ── Nodos decorativos (inspirados en el logo) ── */
+.node-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gradient-glow);
+  display: inline-block;
+}
+
+.node-line {
+  height: 2px;
+  background: linear-gradient(90deg, var(--cyan), var(--lime));
+  border-radius: 1px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   BUTTONS — Estilo XXVCAC
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Botón primario: degradado cyan → lima */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  border-radius: var(--radius-md);
+  border: none;
+  background: var(--gradient-glow);
+  color: #ffffff;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: var(--btn-shadow);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--cyan-dark) 0%, var(--lime-dark) 100%);
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--btn-shadow-hover);
+}
+
+.btn-primary:hover::before {
+  opacity: 1;
+}
+
+.btn-primary span,
+.btn-primary svg {
+  position: relative;
+  z-index: 1;
+}
+
+/* Botón secundario: outline cyan */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--cyan);
+  background: transparent;
+  color: var(--cyan);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.btn-secondary:hover {
+  background: var(--primary-glow);
+  color: var(--cyan-dark);
+  border-color: var(--cyan-dark);
+  transform: translateY(-2px);
+}
+
+html[data-theme="dark"] .btn-secondary {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+html[data-theme="dark"] .btn-secondary:hover {
+  background: var(--primary-glow);
+  color: #ffffff;
+}
+
+/* Botón terciario: outline sutil */
+.btn-tertiary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--border-color);
+  background: var(--bg-secondary);
+  color: var(--text-main);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.btn-tertiary:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+  background: var(--bg-card);
+  transform: translateY(-2px);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SCROLLBAR
+   ═══════════════════════════════════════════════════════════════ */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--cyan), var(--lime));
+  border: 2px solid var(--bg-primary);
+  border-radius: var(--radius-sm);
+  opacity: 0.6;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--cyan-dark), var(--lime-dark));
+  opacity: 1;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SELECTION
+   ═══════════════════════════════════════════════════════════════ */
+::selection {
+  background-color: var(--cyan);
+  color: #ffffff;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   REVEAL ON SCROLL
+   ═══════════════════════════════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LINKS CON SUBRAYADO ANIMADO (estilo nodos conectados)
+   ═══════════════════════════════════════════════════════════════ */
+.link-underline {
+  position: relative;
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-glow);
+  border-radius: 1px;
+  transition: width var(--transition-normal);
+}
+
+.link-underline:hover::after {
+  width: 100%;
+}
+
+.link-underline:hover {
+  color: var(--cyan);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SECTION DIVIDERS — Líneas con nodos (inspiradas en el logo)
+   ═══════════════════════════════════════════════════════════════ */
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 200px;
+  margin: 3rem auto;
+}
+
+.section-divider::before,
+.section-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+}
+
+.section-divider .node-dot {
+  width: 10px;
+  height: 10px;
+  background: var(--gradient-glow);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--primary-glow);
+}
