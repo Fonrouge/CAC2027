@@ -87,9 +87,11 @@ html[data-theme="dark"] .hero-badge {
 }
 
 .hero-brand-image {
-  
-  height: auto;
-  display: block;
+  width: 100%;          /* Fuerza a la imagen a ocupar todo el ancho del contenedor */
+  max-width: 100%;      /* Evita que se desborde horizontalmente en pantallas pequeñas */
+  height: auto;         /* Mantiene la proporción (aspect ratio) original sin deformar */
+  display: block;       /* Quita el espacio en blanco inferior que dejan las imágenes inline */
+  object-fit: cover;    /* Opcional: asegura buena adaptabilidad si le fijas una altura en desktop */
 }
 
 .hero-brand-dark {
