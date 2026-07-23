@@ -77,48 +77,58 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // 2.5. LIGHT/DARK MODE TOGGLE
+  // 2.5. LIGHT/DARK MODE + ACCESSIBILITY (CVD) TOGGLE
   // ==========================================
   const themeSwitchBtn = document.getElementById('theme-switch');
-  if (themeSwitchBtn) {
-    const themeIcon = themeSwitchBtn.querySelector('i');
-    
-    // Check initial theme preference
-    const currentTheme = localStorage.getItem('theme') || 'light';
-    
-    // Setup initial button icon
-    if (currentTheme === 'dark') {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      if (themeIcon) {
-        themeIcon.className = 'fa-solid fa-sun';
+  const accessibilityBtn = document.getElementById('accessibility-toggle');
+
+  if (themeSwitchBtn || accessibilityBtn) {
+    const themeIcon = themeSwitchBtn ? themeSwitchBtn.querySelector('i') : null;
+
+    const isDark = () => (localStorage.getItem('theme') || 'light') === 'dark';
+    const isCvd = () => localStorage.getItem('cvd') === 'true';
+
+    // Applies the combined dark/light × normal/CVD state to the page
+    const applyTheme = () => {
+      const dark = isDark();
+      const cvd = isCvd();
+
+      let dataTheme = null;
+      if (dark && cvd) dataTheme = 'cvd-dark';
+      else if (dark) dataTheme = 'dark';
+      else if (cvd) dataTheme = 'cvd-light';
+
+      if (dataTheme) {
+        document.documentElement.setAttribute('data-theme', dataTheme);
+      } else {
+        document.documentElement.removeAttribute('data-theme');
       }
-    } else {
-      document.documentElement.removeAttribute('data-theme');
+
       if (themeIcon) {
-        themeIcon.className = 'fa-solid fa-moon';
+        themeIcon.className = dark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
       }
+
+      if (accessibilityBtn) {
+        accessibilityBtn.classList.toggle('active', cvd);
+        accessibilityBtn.setAttribute('aria-pressed', String(cvd));
+      }
+    };
+
+    applyTheme();
+
+    if (themeSwitchBtn) {
+      themeSwitchBtn.addEventListener('click', () => {
+        localStorage.setItem('theme', isDark() ? 'light' : 'dark');
+        applyTheme();
+      });
     }
 
-    // Toggle click event
-    themeSwitchBtn.addEventListener('click', () => {
-      const activeTheme = document.documentElement.getAttribute('data-theme');
-      
-      if (activeTheme === 'dark') {
-        // Switch to Light
-        document.documentElement.removeAttribute('data-theme');
-        localStorage.setItem('theme', 'light');
-        if (themeIcon) {
-          themeIcon.className = 'fa-solid fa-moon';
-        }
-      } else {
-        // Switch to Dark
-        document.documentElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
-        if (themeIcon) {
-          themeIcon.className = 'fa-solid fa-sun';
-        }
-      }
-    });
+    if (accessibilityBtn) {
+      accessibilityBtn.addEventListener('click', () => {
+        localStorage.setItem('cvd', String(!isCvd()));
+        applyTheme();
+      });
+    }
   }
 
   // ==========================================
