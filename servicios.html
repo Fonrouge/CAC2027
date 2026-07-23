@@ -11,9 +11,14 @@
   <!-- Blocking Script to prevent flash of theme on reload -->
   <script>
     (function () {
-      const theme = localStorage.getItem('theme') || 'light';
-      if (theme === 'dark') {
-        document.documentElement.setAttribute('data-theme', 'dark');
+      const isDark = (localStorage.getItem('theme') || 'light') === 'dark';
+      const isCvd = localStorage.getItem('cvd') === 'true';
+      let dataTheme = null;
+      if (isDark && isCvd) dataTheme = 'cvd-dark';
+      else if (isDark) dataTheme = 'dark';
+      else if (isCvd) dataTheme = 'cvd-light';
+      if (dataTheme) {
+        document.documentElement.setAttribute('data-theme', dataTheme);
       }
     })();
   </script>
@@ -64,6 +69,9 @@
       <div class="header-actions">
         <button class="theme-toggle" id="theme-switch" aria-label="Cambiar Tema">
           <i class="fa-solid fa-moon"></i>
+        </button>
+        <button class="theme-toggle accessibility-toggle" id="accessibility-toggle" aria-label="Alternar modo daltónico" aria-pressed="false">
+          <i class="fa-solid fa-wheelchair"></i>
         </button>
         <div class="header-cta">
           <button class="btn-secondary" onclick="window.location.href='contacto.html'">Inscripción</button>
