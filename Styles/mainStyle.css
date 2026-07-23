@@ -146,6 +146,161 @@ html[data-theme="dark"] {
 }
 
 /* ═══════════════════════════════════════════════════════════════
+   CVD LIGHT MODE — Paleta para daltonismo, fondo claro
+   Matices basados en Okabe & Ito (2008), "Color Universal Design",
+   la paleta de referencia académica para protanopia/deuteranopia/
+   tritanopia. El Azul (#0072B2) se usa tal cual; el Naranja de
+   Okabe-Ito (#E69F00) se oscurece a #B25900 porque el original
+   solo da 2.25:1 sobre blanco (no llega ni al mínimo de 3:1 de
+   WCAG para componentes de UI). Todos los pares texto/fondo de
+   abajo están verificados ≥4.5:1 (WCAG 2.1 AA, texto normal):
+     Azul  #0072B2 sobre blanco   → 5.19:1
+     Ámbar #B25900 sobre blanco   → 4.86:1
+     Slate #1A1A1A sobre blanco   → 17.40:1
+     Muted #5C5C5C sobre #F7F7F8  → 6.25:1
+   ═══════════════════════════════════════════════════════════════ */
+html[data-theme="cvd-light"] {
+  /* ── Backgrounds ── */
+  --bg-primary: #f7f7f8;
+  --bg-secondary: #ececed;
+  --bg-card: rgba(0, 0, 0, 0.04);
+  --bg-card-hover: rgba(0, 0, 0, 0.08);
+  --border-color: rgba(0, 0, 0, 0.12);
+  --border-color-hover: rgba(0, 0, 0, 0.2);
+
+  /* ── Brand Colors (Okabe-Ito: Blue / Orange) ── */
+  --cyan: #0072b2;
+  --cyan-dark: #00588a;
+  --cyan-light: #4a9fd1;
+  --lime: #b25900;
+  --lime-dark: #8a4600;
+  --slate: #1a1a1a;
+  --slate-light: #333333;
+  --slate-muted: #5c5c5c;
+
+  /* ── Semantic Colors ── */
+  --primary: var(--cyan);
+  --primary-glow: rgba(0, 114, 178, 0.14);
+  --secondary: var(--lime);
+  --secondary-glow: rgba(178, 89, 0, 0.14);
+  --accent: var(--slate);
+  --accent-glow: rgba(26, 26, 26, 0.08);
+
+  /* ── Text ── */
+  --text-main: var(--slate);
+  --text-muted: var(--slate-muted);
+
+  /* ── Gradients ── */
+  --gradient-glow: linear-gradient(135deg, var(--cyan) 0%, var(--lime) 100%);
+  --gradient-glow-soft: linear-gradient(135deg, var(--cyan-light) 0%, var(--lime) 100%);
+  --gradient-accent: linear-gradient(135deg, var(--cyan) 0%, var(--slate) 100%);
+  --gradient-dark: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  --gradient-hero: linear-gradient(180deg, #f8f9fb 0%, #eceef2 50%, #e3e6eb 100%);
+
+  /* ── Radial Glows ── */
+  --body-glow-1: rgba(0, 0, 0, 0.04);
+  --body-glow-2: rgba(0, 0, 0, 0.03);
+  --hero-gradient-center: rgba(0, 0, 0, 0.05);
+  --hero-gradient-glow: rgba(0, 0, 0, 0.04);
+
+  /* ── Header Backgrounds ── */
+  --bg-header: rgba(247, 247, 248, 0.85);
+  --bg-header-scrolled: rgba(247, 247, 248, 0.95);
+
+  /* ── Shadows ── */
+  --card-shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.05);
+  --btn-shadow: 0 4px 14px rgba(0, 114, 178, 0.2);
+  --btn-shadow-hover: 0 6px 20px rgba(0, 114, 178, 0.28);
+
+  /* ── Gallery Themes ── */
+  --gallery-bg-1: linear-gradient(135deg, #f8fafc 0%, #e5e7eb 100%);
+  --gallery-bg-2: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  --gallery-bg-3: linear-gradient(135deg, #f3f4f6 0%, #d1d5db 100%);
+  --gallery-bg-4: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  --gallery-bg-5: linear-gradient(135deg, #eef2f7 0%, #dbe2ea 100%);
+  --gallery-bg-6: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+
+  --gallery-text: var(--slate);
+  --gallery-stroke: rgba(0, 114, 178, 0.25);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   CVD DARK MODE — Paleta para daltonismo, fondo oscuro
+   Mismo criterio que arriba (Okabe & Ito, 2008). Sobre fondo
+   oscuro el Naranja original de Okabe-Ito SÍ cumple WCAG sin
+   modificar (el problema de contraste solo aparece sobre blanco),
+   así que acá se usa tal cual. Pares verificados ≥4.5:1:
+     Sky Blue #56B4E9 sobre #0F1729 → 7.75:1
+     Naranja  #E69F00 sobre #0F1729 → 7.94:1
+     Texto    #F0F0F0 sobre #0F1729 → 15.68:1
+     Muted    #A8B0BB sobre #0F1729 → 8.16:1
+   ═══════════════════════════════════════════════════════════════ */
+html[data-theme="cvd-dark"] {
+  /* ── Backgrounds ── */
+  --bg-primary: #0f1729;
+  --bg-secondary: #162032;
+  --bg-card: rgba(86, 180, 233, 0.06);
+  --bg-card-hover: rgba(86, 180, 233, 0.12);
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-color-hover: rgba(255, 255, 255, 0.16);
+
+  /* ── Brand Colors (Okabe-Ito: Sky Blue / Orange) ── */
+  --cyan: #56b4e9;
+  --cyan-dark: #3f96c9;
+  --cyan-light: #8ecdef;
+  --lime: #e69f00;
+  --lime-dark: #c98800;
+  --slate: #f0f0f0;
+  --slate-light: #cfd4da;
+  --slate-muted: #a8b0bb;
+
+  /* ── Semantic Colors ── */
+  --primary: var(--cyan);
+  --primary-glow: rgba(86, 180, 233, 0.18);
+  --secondary: var(--lime);
+  --secondary-glow: rgba(230, 159, 0, 0.18);
+  --accent: var(--slate-muted);
+  --accent-glow: rgba(168, 176, 187, 0.12);
+
+  /* ── Text ── */
+  --text-main: var(--slate);
+  --text-muted: var(--slate-muted);
+
+  /* ── Gradients ── */
+  --gradient-glow: linear-gradient(135deg, var(--cyan) 0%, var(--lime) 100%);
+  --gradient-glow-soft: linear-gradient(135deg, var(--cyan-light) 0%, var(--lime) 100%);
+  --gradient-accent: linear-gradient(135deg, var(--cyan) 0%, var(--slate-muted) 100%);
+  --gradient-dark: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  --gradient-hero: linear-gradient(180deg, #111827 0%, #1f2937 50%, #374151 100%);
+
+  /* ── Radial Glows ── */
+  --body-glow-1: rgba(86, 180, 233, 0.08);
+  --body-glow-2: rgba(168, 176, 187, 0.06);
+  --hero-gradient-center: rgba(86, 180, 233, 0.07);
+  --hero-gradient-glow: rgba(168, 176, 187, 0.06);
+
+  /* ── Header Backgrounds ── */
+  --bg-header: rgba(15, 23, 41, 0.86);
+  --bg-header-scrolled: rgba(15, 23, 41, 0.95);
+
+  /* ── Shadows ── */
+  --card-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.45);
+  --btn-shadow: 0 4px 14px rgba(86, 180, 233, 0.2);
+  --btn-shadow-hover: 0 6px 20px rgba(86, 180, 233, 0.28);
+
+  /* ── Gallery Themes ── */
+  --gallery-bg-1: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+  --gallery-bg-2: linear-gradient(135deg, #334155 0%, #475569 100%);
+  --gallery-bg-3: linear-gradient(135deg, #475569 0%, #64748b 100%);
+  --gallery-bg-4: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+  --gallery-bg-5: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  --gallery-bg-6: linear-gradient(135deg, #3f4c5d 0%, #475569 100%);
+
+  --gallery-text: #d8dde3;
+  --gallery-stroke: rgba(86, 180, 233, 0.22);
+}
+
+/* ═══════════════════════════════════════════════════════════════
    GLOBAL RESET & BASE
    ═══════════════════════════════════════════════════════════════ */
 *, *::before, *::after {
@@ -222,9 +377,10 @@ img {
   text-transform: uppercase;
 }
 
-html[data-theme="dark"] .badge-edition {
+html[data-theme="dark"] .badge-edition,
+html[data-theme="cvd-dark"] .badge-edition {
   border-color: var(--secondary);
-  background: linear-gradient(135deg, rgba(190, 242, 100, 0.1) 0%, rgba(45, 212, 191, 0.1) 100%);
+  background: linear-gradient(135deg, var(--secondary-glow) 0%, var(--primary-glow) 100%);
   color: var(--text-main);
 }
 
@@ -317,12 +473,14 @@ html[data-theme="dark"] .badge-edition {
   transform: translateY(-2px);
 }
 
-html[data-theme="dark"] .btn-secondary {
+html[data-theme="dark"] .btn-secondary,
+html[data-theme="cvd-dark"] .btn-secondary {
   border-color: var(--primary);
   color: var(--primary);
 }
 
-html[data-theme="dark"] .btn-secondary:hover {
+html[data-theme="dark"] .btn-secondary:hover,
+html[data-theme="cvd-dark"] .btn-secondary:hover {
   background: var(--primary-glow);
   color: #ffffff;
 }
