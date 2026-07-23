@@ -73,9 +73,10 @@
   margin-bottom: 1.5rem;
 }
 
-html[data-theme="dark"] .hero-badge {
+html[data-theme="dark"] .hero-badge,
+html[data-theme="cvd-dark"] .hero-badge {
   border-color: var(--secondary);
-  background: linear-gradient(135deg, rgba(190, 242, 100, 0.1) 0%, rgba(45, 212, 191, 0.1) 100%);
+  background: linear-gradient(135deg, var(--secondary-glow) 0%, var(--primary-glow) 100%);
   color: var(--text-main);
 }
 
@@ -98,11 +99,13 @@ html[data-theme="dark"] .hero-badge {
   display: none;
 }
 
-html[data-theme="dark"] .hero-brand-light {
+html[data-theme="dark"] .hero-brand-light,
+html[data-theme="cvd-dark"] .hero-brand-light {
   display: none;
 }
 
-html[data-theme="dark"] .hero-brand-dark {
+html[data-theme="dark"] .hero-brand-dark,
+html[data-theme="cvd-dark"] .hero-brand-dark {
   display: block;
 }
 
@@ -123,8 +126,9 @@ html[data-theme="dark"] .hero-brand-dark {
   background-clip: text;
 }
 
-html[data-theme="dark"] .hero-title .gradient {
-  background: linear-gradient(135deg, #f1f5f9 0%, #2dd4bf 50%, #bef264 100%);
+html[data-theme="dark"] .hero-title .gradient,
+html[data-theme="cvd-dark"] .hero-title .gradient {
+  background: linear-gradient(135deg, var(--text-main) 0%, var(--primary) 50%, var(--secondary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
